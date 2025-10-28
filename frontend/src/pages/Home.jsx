@@ -2,8 +2,6 @@ import React from 'react'
 import Navbar from '../components/Navbar'
 import Hero from '../components/Hero'
 import Footer from '../components/Footer'
-import { Test } from '../components/test'
-import Starrybg from '../components/Starrybg'
 import { SparklesCore } from '../components/ui/sparkles'
 
 const Home = () => {

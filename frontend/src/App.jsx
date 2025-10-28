@@ -1,6 +1,5 @@
 import React from "react";
 import Home from "./pages/Home";
-import { Test } from "./components/test";
 import ProductPage from "./pages/ProductPage";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Comparison from "./pages/Comparison";
@@ -8,11 +7,7 @@ import Comparison from "./pages/Comparison";
 const App = () => {
 
   return (
-    // <div className="dark:bg-black h-screen w-screen overflow-auto">
-    //   <Home/>
-    //   {/* <Test/> */}
-    //   {/* <ProductPage /> */}
-    // </div>
+
 
     <Router>
       <Routes>
