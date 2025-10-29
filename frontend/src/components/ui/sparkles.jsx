@@ -53,7 +53,7 @@ export const SparklesCore = (props) => {
               },
             },
             fullScreen: {
-              enable: false,
+              enable: true,
               zIndex: 1,
             },
 

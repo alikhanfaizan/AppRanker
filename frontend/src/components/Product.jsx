@@ -11,7 +11,7 @@ function Product() {
 
   const closePanel = () => setActivePanel(null);
   return (
-    <div className="z-10 flex items-center justify-between  h-screen">
+    <div className="z-10 flex items-center justify-between -mt-10 h-screen">
       {/* <Navbar /> */}
       {/* left */}
       <motion.div
