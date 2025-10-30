@@ -5,6 +5,10 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Comparison from "./pages/Comparison";
 import { SparklesCore } from "./components/ui/sparkles";
 import ImpactPage from "./pages/ImpactPage";
+import Dashboard from "./components/Dashboard";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import DashboardPage from "./pages/DashboardPage";
 
 const App = () => {
 
@@ -21,7 +25,6 @@ const App = () => {
           particleColor="#FFFFFF"
         />
       </div>
-
     <Router>
       <Routes>
         
@@ -29,6 +32,7 @@ const App = () => {
         <Route path="/product/:id" element={<ProductPage />} />
         <Route path="/comparison" element={<Comparison />} />
         <Route path="/impact" element={<ImpactPage />} />
+        <Route path="/admin" element={<DashboardPage />} />
       </Routes>
     </Router>
     </div>

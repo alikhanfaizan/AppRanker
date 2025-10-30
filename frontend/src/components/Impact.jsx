@@ -3,6 +3,7 @@ import { Users, Heart, ShoppingCart, Share2, Compass } from "lucide-react";
 
 import { motion } from "framer-motion";
 import { BackgroundGradient } from "./ui/background-gradient";
+import { Button } from "./ui/moving-border";
 
 export default function Impact() {
   const [scores, setScores] = useState({
@@ -109,7 +110,7 @@ export default function Impact() {
   ];
 
   return (
-    <div className="min-h-screen text-white px-6 py-4 relative overflow-hidden">
+    <div className="z-10 min-h-screen text-white px-6 py-4 relative overflow-hidden">
       <h1 className="text-center text-5xl font-extrabold mb-10">
         Your Impact Dashboard
       </h1>
