@@ -1,5 +1,5 @@
 import React from "react";
-import { Plus, Sparkles } from "lucide-react";
+import { Plus, Sparkles, User } from "lucide-react";
 import { Button } from "./ui/moving-border";
 import logo from "../assets/logo.webp";
 import { useNavigate } from "react-router-dom";
@@ -77,12 +77,12 @@ export default function Navbar() {
           </span>
 
           {/* Profile Image */}
-          <div className="w-8 h-8 rounded-full overflow-hidden">
-            <img
-              src="https://via.placeholder.com/40"
-              alt="User"
-              className="w-full h-full object-cover"
-            />
+          
+        </div>
+        <div>
+          <div className="w-8 h-8 rounded-full overflow-hidden cursor-pointer"
+          onClick={() => navigate("/admin")}>
+            <User/>
           </div>
         </div>
       </div>

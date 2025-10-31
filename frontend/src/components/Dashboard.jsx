@@ -32,9 +32,12 @@ import {
   X,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import AppsPending from "./AppsPending";
+import CompareApps from "./CompareApps";
 const Dashboard = () => {
   const [selectedRange, setSelectedRange] = useState("6 Months");
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [currView, setCurrView] = useState("dashboard");
 
   const revenueData = [
     { month: "Apr 2025", value: 30 },
@@ -123,11 +126,21 @@ const Dashboard = () => {
         <div className="px-4 py-6">
           <div className="text-xs text-slate-500 mb-3 font-semibold">MAIN</div>
           <div className="space-y-1">
-            <div className="flex items-center space-x-3 px-3 py-2 bg-slate-800/50 rounded-lg text-sm">
+            <div onClick={() => setCurrView("dashboard")}
+							className={`flex items-center space-x-3 hover:text-white hover:bg-slate-800/30 cursor-pointer px-3 py-2 ${
+								currView === "dashboard"
+									? "bg-slate-800/50 text-white"
+									: "text-slate-400"
+							}  rounded-lg text-sm`}>
               <LayoutDashboard size={16} />
               <span>Dashboard</span>
             </div>
-            <div className="flex items-center space-x-3 px-3 py-2 text-slate-400 hover:text-white hover:bg-slate-800/30 rounded-lg text-sm cursor-pointer">
+            <div onClick={() => setCurrView("appsPending")}
+							className={`flex items-center space-x-3 hover:text-white hover:bg-slate-800/30 cursor-pointer px-3 py-2 ${
+								currView === "appsPending"
+									? "bg-slate-800/50 text-white"
+									: "text-slate-400"
+							}  rounded-lg text-sm`}>
               <Clock size={16} />
               <span>Apps Pending</span>
             </div>
@@ -197,7 +210,12 @@ const Dashboard = () => {
         <div className="px-4 py-6 border-t border-slate-700/50">
           <div className="text-xs text-slate-500 mb-3 font-semibold">TOOLS</div>
           <div className="space-y-1">
-            <div className="flex items-center space-x-3 px-3 py-2 text-slate-400 hover:text-white hover:bg-slate-800/30 rounded-lg text-sm cursor-pointer">
+            <div onClick={() => setCurrView("compareApps")}
+							className={`flex items-center space-x-3 hover:text-white hover:bg-slate-800/30 cursor-pointer px-3 py-2 ${
+								currView === "compareApps"
+									? "bg-slate-800/50 text-white"
+									: "text-slate-400"
+							}  rounded-lg text-sm`}>
               <GitCompare size={16} />
               <span>Compare Apps</span>
             </div>
@@ -226,7 +244,8 @@ const Dashboard = () => {
         ></div>
       )}
 
-      {/* Main Content */}
+
+      {currView === "dashboard" && (
       <div className="lg:ml-56 p-4 md:p-6 lg:p-8">
         {/* Date Range Selector */}
         <div className="flex flex-col lg:flex-row lg:items-center space-y-4 lg:space-y-0 lg:space-x-4 mb-6 lg:mb-8">
@@ -554,7 +573,7 @@ const Dashboard = () => {
           </motion.div>
 
           {/* Pending Approval Card */}
-          <div className="bg-gradient-to-br from-amber-900/20 to-amber-800/10 border border-amber-700/30 rounded-2xl p-4 md:p-6 backdrop-blur-sm transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(251,191,36,0.15)]">
+          <div className="bg-gradient-to-br from-amber-900/20  to-amber-800/10 border border-amber-700/30 rounded-2xl p-4 md:p-6 backdrop-blur-sm transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(251,191,36,0.15)]">
             {/* Header */}
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center space-x-2 text-amber-300">
@@ -572,7 +591,7 @@ const Dashboard = () => {
             </div>
 
             {/* Pending List */}
-            <div className="space-y-2 max-h-[150px] overflow-y-auto no-scrollbar">
+            <div className="space-y-2 max-h-[150px] overflow-y-auto [&::-webkit-scrollbar]:hidden">
               {pendingApprovalData.map((item, index) => (
                 <div
                   key={index}
@@ -603,6 +622,13 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
+  )}
+  {currView === "appsPending" && (
+    <AppsPending/>
+  )}
+  {currView === "compareApps" && (
+    <CompareApps/>
+  )}
     </div>
   );
 };
