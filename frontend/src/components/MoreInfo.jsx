@@ -27,7 +27,7 @@ const MoreInfo = ({ onClose }) => {
   ];
 
   return (
-    <div className="bg-[#0b0b0b] text-white rounded-3xl shadow-xl w-[445px] h-[590px] p-6 flex flex-col border border-[#1a1a1a]">
+    <div className="relative z-20 bg-[#0b0b0b] text-white rounded-3xl shadow-xl w-[445px] h-[590px] p-6 flex flex-col border border-[#1a1a1a]">
         <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }}>
       {/* Header */}
       <div className="flex justify-between items-center mb-5">

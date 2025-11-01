@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Eye, Check, X, AlertCircle, RefreshCw } from "lucide-react";
-
+import img1 from "../assets/Chat-GPT-logo.webp";
+import img2 from "../assets/img2.webp";
+import img3 from "../assets/img3.jpeg";
 const AppsPending = () => {
   const initialData = [
     {
@@ -8,7 +10,7 @@ const AppsPending = () => {
       name: "Design Studio",
       vendor: "Creative Labs",
       date: "2025-10-22",
-      logo: "/logos/design.png",
+      logo: img1,
       status: "Pending",
     },
     {
@@ -16,7 +18,7 @@ const AppsPending = () => {
       name: "SecureVault VPN",
       vendor: "Privacy Solutions",
       date: "2025-10-22",
-      logo: "/logos/securevault.png",
+      logo: img2,
       status: "Pending",
     },
     {
@@ -24,7 +26,7 @@ const AppsPending = () => {
       name: "TaskMaster Pro",
       vendor: "Productivity Co",
       date: "2025-10-22",
-      logo: "/logos/taskmaster.png",
+      logo: img3,
       status: "Pending",
     },
   ];
@@ -130,9 +132,12 @@ const AppsPending = () => {
             {filteredApps.map((app) => (
               <tr key={app.id} className="border-t border-slate-700">
                 <td className="p-3 flex items-center space-x-2">
-                  <div className="w-6 h-6 bg-slate-700 rounded-full flex items-center justify-center">
-                    {app.name.slice(0, 3)}
-                  </div>
+                  <img
+                        src={app.logo}
+                        alt={app.name}
+                        
+                        className="w-10 h-10 rounded-lg object-cover"
+                      />
                   <span>{app.name}</span>
                 </td>
                 <td className="p-3">{app.vendor}</td>

@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Check, X, ChevronDown } from "lucide-react";
-
+import img1 from "../assets/Chat-GPT-logo.webp";
+import img2 from "../assets/img2.webp";
+import img3 from "../assets/img3.jpeg";
 const CompareApps = () => {
   const apps = [
     {
@@ -10,7 +12,7 @@ const CompareApps = () => {
       vendor: "Creative Labs",
       category: "Graphic Design",
       pricing: "$29/month",
-      logo: "https://via.placeholder.com/40x40.png?text=DS",
+      logo: img1,
       features: {
         "Cloud Sync": true,
         "Team Collaboration": true,
@@ -25,7 +27,7 @@ const CompareApps = () => {
       vendor: "Privacy Solutions",
       category: "Cybersecurity",
       pricing: "$9/month",
-      logo: "https://via.placeholder.com/40x40.png?text=VPN",
+      logo: img2,
       features: {
         "Cloud Sync": false,
         "Team Collaboration": false,
@@ -40,7 +42,7 @@ const CompareApps = () => {
       vendor: "Productivity Co",
       category: "Project Management",
       pricing: "$19/month",
-      logo: "https://via.placeholder.com/40x40.png?text=TMP",
+      logo: img3,
       features: {
         "Cloud Sync": true,
         "Team Collaboration": true,
@@ -169,7 +171,7 @@ const CompareApps = () => {
                       <img
                         src={selectedApp1.logo}
                         alt={selectedApp1.name}
-                        className="w-10 h-10 rounded-md"
+                        className="w-10 h-10 rounded-lg object-cover"
                       />
                     )}
                   </td>

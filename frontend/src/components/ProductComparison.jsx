@@ -9,79 +9,131 @@ import {
 } from "lucide-react";
 
 import { motion } from "framer-motion";
-
+import img1 from "../assets/notion_logo.jpg";
+import img2 from "../assets/img2.webp";
+import img3 from "../assets/images (1).jpeg";
 const ProductComparisonPage = () => {
   const tools = [
-    {
-      name: "Cursor",
-      description:
-        "Cursor is an AI-powered coding tool designed to enhance productivity for developers. It offers features like intelligent code completion, command-line assistance, and interactive coding environments, making it easier to write and manage code efficiently.",
-      price: "$0",
-      oldPrice: "$10/month",
-      rating: "80%",
-      features: [
-        "AI-powered code completion",
-        "Command-line interface assistance",
-        "Interactive coding environments",
-        "Real-time collaboration tools",
-        "Support for multiple programming languages",
-      ],
-      benefits: [
-        "Cheating engaging CRM",
-        "Fast 5G Build",
-        "Comments",
-        "Components",
-      ],
-      audience: "Teams",
-      platforms: ["Web", "Desktop"],
-    },
-    {
-      name: "Cursor",
-      description:
-        "Cursor is an AI-powered coding tool designed to enhance productivity for developers. It offers features like intelligent code completion, command-line assistance, and interactive coding environments, making it easier to write and manage code efficiently.",
-      price: "$0",
-      oldPrice: "$10/month",
-      rating: "80%",
-      features: [
-        "AI-powered code completion",
-        "Command-line interface assistance",
-        "Interactive coding environments",
-        "Real-time collaboration tools",
-        "Support for multiple programming languages",
-      ],
-      benefits: [
-        "Cheating engaging CRM",
-        "Fast 5G Build",
-        "Comments",
-        "Components",
-      ],
-      audience: "Teams",
-      platforms: ["Web", "Desktop"],
-    },
-    {
-      name: "Cursor",
-      description:
-        "Cursor is an AI-powered coding tool designed to enhance productivity for developers. It offers features like intelligent code completion, command-line assistance, and interactive coding environments, making it easier to write and manage code efficiently.",
-      price: "$0",
-      oldPrice: "$10/month",
-      rating: "80%",
-      features: [
-        "AI-powered code completion",
-        "Command-line interface assistance",
-        "Interactive coding environments",
-        "Real-time collaboration tools",
-        "Support for multiple programming languages",
-      ],
-      benefits: [
-        "Cheating engaging CRM",
-        "Fast 5G Build",
-        "Comments",
-        "Components",
-      ],
-      audience: "Teams",
-      platforms: ["Web", "Desktop"],
-    },
-  ];
+  {
+    name: "Cursor",
+    description:
+      "Cursor is an AI-powered coding assistant that enhances developer productivity with intelligent autocompletion, in-line debugging, and command-line integration. It helps streamline your development workflow and reduce repetitive coding tasks.",
+    price: "$0",
+    oldPrice: "$10/month",
+    rating: "85%",
+    features: [
+      "AI-powered code completion",
+      "Command-line integration",
+      "Smart debugging assistance",
+      "Git-aware code suggestions",
+      "Support for major programming languages",
+    ],
+    image: img2,
+    benefits: [
+      "Faster code writing",
+      "Reduced syntax errors",
+      "Improved workflow",
+      "Collaborative editing",
+    ],
+    audience: "Developers",
+    platforms: ["Web", "Desktop"],
+  },
+  {
+    name: "Notion AI",
+    description:
+      "Notion AI is a productivity and writing enhancement tool built into Notion. It assists with summarizing, brainstorming, translating, and automating content creation within your workspace.",
+    price: "$8/month",
+    oldPrice: "$15/month",
+    rating: "90%",
+    image: img1,
+    features: [
+      "Smart document summarization",
+      "AI brainstorming tools",
+      "Automatic translation",
+      "Task and note generation",
+      "Integrated with Notion workspace",
+    ],
+    benefits: [
+      "Boost writing efficiency",
+      "Organize content intelligently",
+      "Save hours on documentation",
+      "Enhance creative output",
+    ],
+    audience: "Writers & Teams",
+    platforms: ["Web", "Mobile", "Desktop"],
+  },
+  {
+    name: "Runway ML",
+    description:
+      "Runway ML is an AI-powered video editing and creative platform that lets you generate, edit, and enhance media content using advanced generative AI models.",
+    price: "$15/month",
+    oldPrice: "$25/month",
+    rating: "92%",
+    image: img3,
+    features: [
+      "AI video editing",
+      "Text-to-video generation",
+      "Background removal",
+      "Style transfer",
+      "Real-time collaboration tools",
+    ],
+    benefits: [
+      "Save time on post-production",
+      "High-quality AI effects",
+      "No coding required",
+      "Creative freedom for editors",
+    ],
+    audience: "Video Creators",
+    platforms: ["Web"],
+  },
+  // {
+  //   name: "Perplexity AI",
+  //   description:
+  //     "Perplexity AI is an AI search engine that provides accurate, cited answers with context. It combines conversational search with web-based retrieval to give users trustworthy results quickly.",
+  //   price: "Free",
+  //   oldPrice: "$5/month",
+  //   rating: "88%",
+  //   features: [
+  //     "Conversational search",
+  //     "Cited sources for reliability",
+  //     "Web-based context awareness",
+  //     "Custom search collections",
+  //     "AI summarization of results",
+  //   ],
+  //   benefits: [
+  //     "Faster information retrieval",
+  //     "Accurate and verified sources",
+  //     "Simple, intuitive interface",
+  //     "Ideal for research",
+  //   ],
+  //   audience: "Students & Researchers",
+  //   platforms: ["Web", "Mobile"],
+  // },
+  // {
+  //   name: "Gamma App",
+  //   description:
+  //     "Gamma App lets users create beautiful, presentation-ready documents using AI. It turns text prompts into clean, modern slides or webpages automatically.",
+  //   price: "$10/month",
+  //   oldPrice: "$20/month",
+  //   rating: "87%",
+  //   features: [
+  //     "AI slide generation",
+  //     "Template customization",
+  //     "Collaborative editing",
+  //     "Export to PDF or web",
+  //     "Live presentation mode",
+  //   ],
+  //   benefits: [
+  //     "Instant professional presentations",
+  //     "Zero design skills needed",
+  //     "Real-time collaboration",
+  //     "Cloud storage and sharing",
+  //   ],
+  //   audience: "Business Professionals",
+  //   platforms: ["Web"],
+  // },
+];
+
 
   return (
     <div className="min-h-screen  text-white  relative overflow-hidden">
@@ -122,9 +174,9 @@ const ProductComparisonPage = () => {
             {/* Image Placeholder */}
             <div className="bg-black rounded-2xl mt-6 h-36 flex justify-center items-center">
               <img
-                src="https://upload.wikimedia.org/wikipedia/commons/5/51/Cursor_icon.png"
+                src={tool.image}
                 alt="logo"
-                className="h-10 opacity-90"
+                className="w-full h-full object-cover opacity-90"
               />
             </div>
 

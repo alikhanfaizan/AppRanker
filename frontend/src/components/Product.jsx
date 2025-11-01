@@ -5,6 +5,7 @@ import { Gallery } from "./Galley";
 import MoreInfo from "./MoreInfo";
 
 import { motion, AnimatePresence } from "framer-motion";
+import img1 from "../assets/img3.jpeg";
 
 function Product() {
   const [activePanel, setActivePanel] = useState(null); // 'gallery' | 'info' | null
@@ -29,10 +30,15 @@ function Product() {
         </div>
 
         {/* Placeholder Image Section */}
-        <div className="bg-[#1a1a1a] rounded-xl w-full h-40 flex flex-col justify-center items-center text-gray-200 space-y-2 -mt-5">
-          <div className="bg-gray-700 w-3/4 h-4 rounded-full"></div>
-          <div className="bg-gray-700 w-1/2 h-4 rounded-full"></div>
-        </div>
+       <div className="bg-[#1a1a1a]  rounded-xl w-full h-40 overflow-hidden -mt-5">
+  <img
+    src={img1}
+    alt="placeholder"
+    className="w-full h-full object-cover"
+  />
+</div>
+
+
 
         {/* Title + Category */}
         <div className="flex justify-between items-start border-b pb-6 border-white/20">

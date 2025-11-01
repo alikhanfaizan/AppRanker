@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import img1 from "../assets/Chat-GPT-logo.webp";
+import img2 from "../assets/img2.webp";
+import img3 from "../assets/img3.jpeg";
 const SearchBox = () => {
   const navigate = useNavigate();
   const [query, setQuery] = useState("");
@@ -8,6 +11,8 @@ const SearchBox = () => {
 
   const [hovered, setHovered] = useState(null);
 
+
+  
   const handleSearch = () => {
     if (query.trim() !== "") {
       setShowCards(true);
@@ -46,7 +51,7 @@ const SearchBox = () => {
                 subtitle: "Video messaging tool",
                 tag: "Best Rating",
                 tagColor: "bg-orange-500/20 text-orange-400",
-                img: "https://via.placeholder.com/300x150",
+                img: img1,
               },
               {
                 id: 2,
@@ -54,7 +59,7 @@ const SearchBox = () => {
                 subtitle: "SEO content optimization",
                 tag: "Editor's Choice",
                 tagColor: "bg-green-500/20 text-green-400",
-                img: "https://via.placeholder.com/300x150",
+                img: img2,
               },
               {
                 id: 3,
@@ -62,7 +67,7 @@ const SearchBox = () => {
                 subtitle: "Create hyperrealistic AI videos",
                 tag: "Best Price",
                 tagColor: "bg-blue-500/20 text-blue-400",
-                img: "https://via.placeholder.com/300x150",
+                img:img3,
               },
             ].map((card) => (
               <motion.div
