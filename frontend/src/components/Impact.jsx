@@ -112,7 +112,9 @@ export default function Impact() {
   return (
     <div className="z-10 min-h-screen text-white px-6 py-4 relative overflow-hidden">
       <h1 className="text-center text-5xl font-extrabold mb-10">
-        Your Impact Dashboard
+        Your Impact <span className="bg-gradient-to-r from-[#007BFF] to-[#00C26F] bg-clip-text text-transparent">
+            Dashboard
+          </span>
       </h1>
 
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-5 items-stretch">

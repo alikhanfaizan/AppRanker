@@ -1,26 +1,46 @@
-import React, { useState } from "react";
-import { Star, ArrowBigLeft, ChevronLeft } from "lucide-react";
-import Navbar from "./Navbar";
+import React, { useState, useEffect } from "react";
+import { Star, ChevronLeft } from "lucide-react";
 import { Gallery } from "./Galley";
 import MoreInfo from "./MoreInfo";
-
 import { motion, AnimatePresence } from "framer-motion";
 import img1 from "../assets/img3.jpeg";
 
 function Product() {
-  const [activePanel, setActivePanel] = useState(null); // 'gallery' | 'info' | null
+  const [activePanel, setActivePanel] = useState(null);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+  // console.log("rebder")
+  // Detect screen width once and on resize
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth < 768); // md breakpoint
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const closePanel = () => setActivePanel(null);
+
+  const slideLeft = {
+    initial: { x: "-100%", opacity: 0 },
+    animate: { x: 0, opacity: 1 },
+    exit: { x: "-100%", opacity: 0 },
+    transition: { duration: 0.5, ease: "easeInOut" },
+  };
+
+  const slideRight = {
+    initial: { x: "100%", opacity: 0 },
+    animate: { x: 0, opacity: 1 },
+    exit: { x: "100%", opacity: 0 },
+    transition: { duration: 0.5, ease: "easeInOut" },
+  };
+
   return (
-    <div className="z-10 flex items-center justify-between -mt-10 h-screen">
-      {/* <Navbar /> */}
-      {/* left */}
+    <div className="z-10 flex items-center justify-between min-h-screen px-4 py-8">
+      {/* Main Card */}
       <motion.div
-         initial={{ x: "-100%", opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            exit={{ x: "-100%", opacity: 0 }}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
-        className="bg-[#0d0d0d] text-white rounded-3xl max-w-xl max-h-[590px] w-full mx-auto p-8 shadow-xl border border-gray-800 flex flex-col space-y-4 font-[Poppins] z-10"
+        {...(!isSmallScreen ? slideLeft : {})}
+        className="bg-[#0d0d0d] text-white rounded-3xl max-w-xl w-full mx-auto p-8 shadow-xl border border-gray-800 flex flex-col space-y-4 font-[Poppins] z-10"
       >
         {/* Back Button */}
         <div>
@@ -29,16 +49,10 @@ function Product() {
           </button>
         </div>
 
-        {/* Placeholder Image Section */}
-       <div className="bg-[#1a1a1a]  rounded-xl w-full h-40 overflow-hidden -mt-5">
-  <img
-    src={img1}
-    alt="placeholder"
-    className="w-full h-full object-cover"
-  />
-</div>
-
-
+        {/* Placeholder Image */}
+        <div className="bg-[#1a1a1a] rounded-xl w-full h-40 overflow-hidden -mt-5">
+          <img src={img1} alt="placeholder" className="w-full h-full object-cover" />
+        </div>
 
         {/* Title + Category */}
         <div className="flex justify-between items-start border-b pb-6 border-white/20">
@@ -57,9 +71,7 @@ function Product() {
           Surfer SEO is a powerful content optimization platform designed to
           enhance online visibility across various search engines. It provides
           tools for content creation, auditing, and tracking to help users
-          improve their SEO strategies effectively. With real-time data and
-          insights, Surfer SEO enables users to create high-ranking content
-          quickly and efficiently.
+          improve their SEO strategies effectively.
         </p>
 
         {/* Rating */}
@@ -68,11 +80,7 @@ function Product() {
           <span className="text-gray-300 text-sm">4/5</span>
           <div className="flex items-center space-x-1">
             {[...Array(4)].map((_, i) => (
-              <Star
-                key={i}
-                size={16}
-                className="text-yellow-400 fill-yellow-400"
-              />
+              <Star key={i} size={16} className="text-yellow-400 fill-yellow-400" />
             ))}
             <Star size={16} className="text-gray-500" />
           </div>
@@ -96,36 +104,30 @@ function Product() {
           </div>
         </div>
 
-        {/* Buy Now Button */}
+        {/* Buy Now */}
         <button className="mt-4 w-full py-3 rounded-full bg-blue-600 hover:bg-blue-700 transition text-white font-medium">
           Buy Now
         </button>
       </motion.div>
 
-      {/* Gallery Panel (slides from left) */}
+      {/* Gallery Panel */}
       <AnimatePresence>
         {activePanel === "gallery" && (
           <motion.div
-            initial={{ x: "-100%", opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            exit={{ x: "-100%", opacity: 0 }}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
-            className="absolute left-0 ml-5"
+            {...(!isSmallScreen ? slideLeft : {})}
+            className={`absolute left-0 ${isSmallScreen ? "w-full" : "ml-5"}`}
           >
             <Gallery onClose={closePanel} />
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* More Info Panel (slides from right) */}
+      {/* More Info Panel */}
       <AnimatePresence>
         {activePanel === "info" && (
           <motion.div
-            initial={{ x: "100%", opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            exit={{ x: "100%", opacity: 0 }}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
-            className="absolute right-0 mr-5"
+            {...(!isSmallScreen ? slideRight : {})}
+            className={`absolute right-0 ${isSmallScreen ? "w-full" : "mr-5"}`}
           >
             <MoreInfo onClose={closePanel} />
           </motion.div>

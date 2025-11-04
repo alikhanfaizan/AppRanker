@@ -43,7 +43,7 @@ const SearchBox = () => {
       {/* Display 3 Cards if searched */}
       {showCards && (
         <>
-          <div className="z-50 flex justify-center gap-6 mt-1 w-full">
+          <div className="z-50  flex flex-wrap justify-center gap-4 sm:gap-6 mt-1 w-full">
             {[
               {
                 id: 1,
