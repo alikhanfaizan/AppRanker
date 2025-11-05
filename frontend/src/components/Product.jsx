@@ -8,11 +8,9 @@ import img1 from "../assets/img3.jpeg";
 function Product() {
   const [activePanel, setActivePanel] = useState(null);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
-  // console.log("rebder")
-  // Detect screen width once and on resize
   useEffect(() => {
     const handleResize = () => {
-      setIsSmallScreen(window.innerWidth < 768); // md breakpoint
+      setIsSmallScreen(window.innerWidth < 768); 
     };
     handleResize();
     window.addEventListener("resize", handleResize);
