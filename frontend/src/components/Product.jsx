@@ -8,9 +8,10 @@ import img1 from "../assets/img3.jpeg";
 function Product() {
   const [activePanel, setActivePanel] = useState(null);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
+
   useEffect(() => {
     const handleResize = () => {
-      setIsSmallScreen(window.innerWidth < 768); 
+      setIsSmallScreen(window.innerWidth < 768);
     };
     handleResize();
     window.addEventListener("resize", handleResize);
@@ -19,25 +20,13 @@ function Product() {
 
   const closePanel = () => setActivePanel(null);
 
-  const slideLeft = {
-    initial: { x: "-100%", opacity: 0 },
-    animate: { x: 0, opacity: 1 },
-    exit: { x: "-100%", opacity: 0 },
-    transition: { duration: 0.5, ease: "easeInOut" },
-  };
-
-  const slideRight = {
-    initial: { x: "100%", opacity: 0 },
-    animate: { x: 0, opacity: 1 },
-    exit: { x: "100%", opacity: 0 },
-    transition: { duration: 0.5, ease: "easeInOut" },
-  };
-
   return (
-    <div className="z-10 flex items-center justify-between min-h-screen px-4 py-8">
+    <div className="z-10 flex items-center justify-center min-h-screen px-4 py-8">
       {/* Main Card */}
       <motion.div
-        {...(!isSmallScreen ? slideLeft : {})}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
         className="bg-[#0d0d0d] text-white rounded-3xl max-w-xl w-full mx-auto p-8 shadow-xl border border-gray-800 flex flex-col space-y-4 font-[Poppins] z-10"
       >
         {/* Back Button */}
@@ -49,7 +38,11 @@ function Product() {
 
         {/* Placeholder Image */}
         <div className="bg-[#1a1a1a] rounded-xl w-full h-40 overflow-hidden -mt-5">
-          <img src={img1} alt="placeholder" className="w-full h-full object-cover" />
+          <img
+            src={img1}
+            alt="placeholder"
+            className="w-full h-full object-cover"
+          />
         </div>
 
         {/* Title + Category */}
@@ -78,7 +71,11 @@ function Product() {
           <span className="text-gray-300 text-sm">4/5</span>
           <div className="flex items-center space-x-1">
             {[...Array(4)].map((_, i) => (
-              <Star key={i} size={16} className="text-yellow-400 fill-yellow-400" />
+              <Star
+                key={i}
+                size={16}
+                className="text-yellow-400 fill-yellow-400"
+              />
             ))}
             <Star size={16} className="text-gray-500" />
           </div>
@@ -112,8 +109,23 @@ function Product() {
       <AnimatePresence>
         {activePanel === "gallery" && (
           <motion.div
-            {...(!isSmallScreen ? slideLeft : {})}
-            className={`absolute left-0 ${isSmallScreen ? "w-full" : "ml-5"}`}
+            initial={
+              isSmallScreen
+                ? { opacity: 0, scale: 0.95 }
+                : { x: "-100%", opacity: 0 }
+            }
+            animate={
+              isSmallScreen ? { opacity: 1, scale: 1 } : { x: 0, opacity: 1 }
+            }
+            exit={
+              isSmallScreen
+                ? { opacity: 0, scale: 0.95 }
+                : { x: "-100%", opacity: 0 }
+            }
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className={`absolute ${
+              isSmallScreen ? "inset-0" : "left-0 ml-5"
+            } z-50`}
           >
             <Gallery onClose={closePanel} />
           </motion.div>
@@ -124,8 +136,23 @@ function Product() {
       <AnimatePresence>
         {activePanel === "info" && (
           <motion.div
-            {...(!isSmallScreen ? slideRight : {})}
-            className={`absolute right-0 ${isSmallScreen ? "w-full" : "mr-5"}`}
+            initial={
+              isSmallScreen
+                ? { opacity: 0, scale: 0.95 }
+                : { x: "100%", opacity: 0 }
+            }
+            animate={
+              isSmallScreen ? { opacity: 1, scale: 1 } : { x: 0, opacity: 1 }
+            }
+            exit={
+              isSmallScreen
+                ? { opacity: 0, scale: 0.95 }
+                : { x: "100%", opacity: 0 }
+            }
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className={`absolute ${
+              isSmallScreen ? "inset-0" : "right-0 mr-5"
+            } z-50`}
           >
             <MoreInfo onClose={closePanel} />
           </motion.div>

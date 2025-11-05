@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { Plus, Sparkles, User, Menu, X, Home, Bell, Trophy, Settings, LogOut } from "lucide-react";
+import { Plus, Sparkles, User, Menu, X, Home, Bell, Trophy, Settings, LogOut, HomeIcon } from "lucide-react";
 import { Button } from "./ui/moving-border";
 import logo from "../assets/logo.webp";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
-export default function Navbar() {
+export default function Navbar2({sidebarOpen, setSidebarOpen}) {
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -89,13 +89,20 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Hamburger */}
+      <div className="flex gap-5 items-center">
       <button
         onClick={() => setMenuOpen(!menuOpen)}
         className="md:hidden p-2 rounded-lg bg-black/70 text-white z-50"
       >
-        {menuOpen ? <X size={24} /> : <Menu size={24} />}
+        {menuOpen ? <X size={24} /> : <HomeIcon size={24} />}
       </button>
-
+       <button
+        onClick={() => setSidebarOpen(!sidebarOpen)}
+        className="lg:hidden  p-2 bg-slate-800 rounded-lg"
+      >
+        {sidebarOpen ? <X size={24} /> : <Menu size={24} />}
+      </button>
+    </div>
       {/* Mobile Drawer */}
       <AnimatePresence>
         {menuOpen && (

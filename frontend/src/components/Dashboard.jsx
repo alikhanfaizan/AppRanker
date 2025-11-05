@@ -19,19 +19,17 @@ import { motion } from "framer-motion";
 import AppsPending from "./AppsPending";
 import CompareApps from "./CompareApps";
 import MainDashboard from "./MainDashboard";
+import Navbar2 from "./Navbar2";
 const Dashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [currView, setCurrView] = useState("dashboard");
 
   return (
+    <div>
+      <Navbar2 sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
     <div className="z-10 min-h-screen text-white px-6 py-1 relative overflow-hidden">
       {/* Mobile Menu Button */}
-      <button
-        onClick={() => setSidebarOpen(!sidebarOpen)}
-        className="lg:hidden fixed top-4 left-4 z-50 p-2 bg-slate-800 rounded-lg"
-      >
-        {sidebarOpen ? <X size={24} /> : <Menu size={24} />}
-      </button>
+     
 
       {/* Sidebar */}
       <div
@@ -172,6 +170,7 @@ const Dashboard = () => {
       )}
       {currView === "appsPending" && <AppsPending />}
       {currView === "compareApps" && <CompareApps />}
+    </div>
     </div>
   );
 };
