@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Users, Heart, ShoppingCart, Share2, Compass } from "lucide-react";
-
 import { motion } from "framer-motion";
 import { BackgroundGradient } from "./ui/background-gradient";
 import { Button } from "./ui/moving-border";
@@ -110,34 +109,47 @@ export default function Impact() {
   ];
 
   return (
-    <div className="z-10 min-h-screen text-white px-6 py-4 relative overflow-hidden">
-      <h1 className="text-center text-5xl font-extrabold mb-10">
-        Your Impact <span className="bg-gradient-to-r from-[#007BFF] to-[#00C26F] bg-clip-text text-transparent">
-            Dashboard
-          </span>
+    <div className="z-10 min-h-screen text-white px-4 sm:px-6 md:px-8 py-8 relative overflow-hidden">
+      {/* Title */}
+      <h1 className="text-center text-3xl sm:text-4xl md:text-5xl font-extrabold mb-10 leading-tight">
+        Your Impact{" "}
+        <span className="bg-gradient-to-r from-[#007BFF] to-[#00C26F] bg-clip-text text-transparent">
+          Dashboard
+        </span>
       </h1>
 
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-5 items-stretch">
+      {/* Score Grid */}
+      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
         {/* Left Column */}
         <div className="flex flex-col gap-4">
+          {/* Discovery */}
           <div className="bg-[#0D1B2A]/70 backdrop-blur-lg border border-[#1E293B] rounded-xl p-5 text-center shadow">
-            <div className="flex justify-center items-center gap-1 mb-1">
+            <div className="flex justify-center items-center gap-2 mb-1">
               <Compass className="text-emerald-400 w-5 h-5" />
-              <h3 className="text-emerald-400 font-medium">Discovery Score</h3>
+              <h3 className="text-emerald-400 text-sm sm:text-base font-medium">
+                Discovery Score
+              </h3>
             </div>
-            <p className="text-4xl font-bold mb-1">{scores.discovery}</p>
-            <p className="text-gray-400 text-xs">
+            <p className="text-3xl sm:text-4xl font-bold mb-1">
+              {scores.discovery}
+            </p>
+            <p className="text-gray-400 text-xs sm:text-sm">
               Activity, curiosity, and exploration across the platform
             </p>
           </div>
 
+          {/* Engagement */}
           <div className="bg-[#0D1B2A]/70 backdrop-blur-lg border border-[#1E293B] rounded-xl p-5 text-center shadow">
-            <div className="flex justify-center items-center gap-1 mb-1">
+            <div className="flex justify-center items-center gap-2 mb-1">
               <Users className="text-emerald-400 w-5 h-5" />
-              <h3 className="text-emerald-400 font-medium">Engagement Score</h3>
+              <h3 className="text-emerald-400 text-sm sm:text-base font-medium">
+                Engagement Score
+              </h3>
             </div>
-            <p className="text-4xl font-bold mb-1">{scores.engagement}</p>
-            <p className="text-gray-400 text-xs">
+            <p className="text-3xl sm:text-4xl font-bold mb-1">
+              {scores.engagement}
+            </p>
+            <p className="text-gray-400 text-xs sm:text-sm">
               Profile completion and initial platform engagement
             </p>
           </div>
@@ -146,33 +158,44 @@ export default function Impact() {
         {/* Center Impact Score */}
         <BackgroundGradient className="rounded-[22px] ">
           <div className="bg-[#0D1B2A]/70 backdrop-blur-lg border border-[#1E293B] rounded-xl p-18 flex flex-col justify-center items-center shadow">
-            {" "}
-            <Heart className="text-emerald-400 w-5 h-5 mb-1" />{" "}
-            <h3 className="text-emerald-400 font-medium">Impact Score</h3>{" "}
-            <p className="text-5xl font-extrabold mt-1">{scores.impact}</p>{" "}
-            <p className="text-gray-300 text-sm mt-1">Total Points</p>{" "}
+            
+            <Heart className="text-emerald-400 w-5 h-9 mb-3" />
+            <h3 className="text-emerald-400 font-medium">Impact Score</h3>
+            <p className="text-5xl font-extrabold mt-1">{scores.impact}</p>
+            <p className="text-gray-300 text-sm mt-1">Total Points</p>
           </div>
         </BackgroundGradient>
+
         {/* Right Column */}
         <div className="flex flex-col gap-4">
+          {/* Influence */}
           <div className="bg-[#0D1B2A]/70 backdrop-blur-lg border border-[#1E293B] rounded-xl p-5 text-center shadow">
-            <div className="flex justify-center items-center gap-1 mb-1">
+            <div className="flex justify-center items-center gap-2 mb-1">
               <Share2 className="text-emerald-400 w-5 h-5" />
-              <h3 className="text-emerald-400 font-medium">Influence Score</h3>
+              <h3 className="text-emerald-400 text-sm sm:text-base font-medium">
+                Influence Score
+              </h3>
             </div>
-            <p className="text-4xl font-bold mb-1">{scores.influence}</p>
-            <p className="text-gray-400 text-xs">
+            <p className="text-3xl sm:text-4xl font-bold mb-1">
+              {scores.influence}
+            </p>
+            <p className="text-gray-400 text-xs sm:text-sm">
               Community growth through shares and referrals
             </p>
           </div>
 
+          {/* Loyalty */}
           <div className="bg-[#0D1B2A]/70 backdrop-blur-lg border border-[#1E293B] rounded-xl p-5 text-center shadow">
-            <div className="flex justify-center items-center gap-1 mb-1">
+            <div className="flex justify-center items-center gap-2 mb-1">
               <ShoppingCart className="text-emerald-400 w-5 h-5" />
-              <h3 className="text-emerald-400 font-medium">Loyalty Score</h3>
+              <h3 className="text-emerald-400 text-sm sm:text-base font-medium">
+                Loyalty Score
+              </h3>
             </div>
-            <p className="text-4xl font-bold mb-1">{scores.loyalty}</p>
-            <p className="text-gray-400 text-xs">
+            <p className="text-3xl sm:text-4xl font-bold mb-1">
+              {scores.loyalty}
+            </p>
+            <p className="text-gray-400 text-xs sm:text-sm">
               Purchases and repeat engagement
             </p>
           </div>
@@ -180,14 +203,18 @@ export default function Impact() {
       </div>
 
       {/* Rewards Section */}
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-4 pb-0">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-8 pb-8">
         {rewards.map((reward, index) => (
           <div
             key={index}
             className="bg-[#0D1B2A]/70 backdrop-blur-lg border border-[#1E293B] rounded-xl p-5 shadow"
           >
-            <h3 className={`font-bold mb-3 ${reward.color}`}>{reward.title}</h3>
-            <ul className="space-y-1 text-sm text-gray-300">
+            <h3
+              className={`font-bold text-base sm:text-lg mb-3 ${reward.color}`}
+            >
+              {reward.title}
+            </h3>
+            <ul className="space-y-1 text-xs sm:text-sm text-gray-300">
               {reward.items.map((item, i) => (
                 <li key={i} className="flex justify-between">
                   <span>{item.name}</span>

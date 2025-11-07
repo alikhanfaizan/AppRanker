@@ -11,6 +11,7 @@ const SearchBox = () => {
   const [showCards, setShowCards] = useState(false);
   const [hovered, setHovered] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
+  const [filteredCards, setFilteredCards] = useState([]);
 
   // Detect screen size
   useEffect(() => {
@@ -19,14 +20,6 @@ const SearchBox = () => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-
-  const handleSearch = () => {
-    if (query.trim() !== "") {
-      setShowCards(true);
-    } else {
-      setShowCards(false);
-    }
-  };
 
   const cards = [
     {
@@ -55,6 +48,26 @@ const SearchBox = () => {
     },
   ];
 
+  // 🔹 Dynamic search logic
+  useEffect(() => {
+    const q = query.trim().toLowerCase();
+
+    if (q === "") {
+      setShowCards(false);
+      setFilteredCards([]);
+      return;
+    }
+
+    const results = cards.filter(
+      (card) =>
+        card.title.toLowerCase().includes(q) ||
+        card.subtitle.toLowerCase().includes(q)
+    );
+
+    setFilteredCards(results);
+    setShowCards(results.length > 0);
+  }, [query]); // Re-run search on every keystroke
+
   return (
     <div className="z-10 flex flex-col items-center gap-6 w-full max-w-4xl mx-auto">
       {/* Search Input */}
@@ -67,8 +80,9 @@ const SearchBox = () => {
           className="w-full bg-black/70 text-gray-300 placeholder-gray-400 border border-white/10 rounded-2xl px-6 py-4 text-lg focus:outline-none focus:ring-2 focus:ring-cyan-400"
         />
         <button
-          onClick={handleSearch}
           className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-gray-400 border border-white/20 px-6 py-2 rounded-full hover:bg-black/70 transition hover:scale-105"
+          // Explore button kept (for design consistency), but not required anymore
+          onClick={() => setShowCards(filteredCards.length > 0)}
         >
           Explore
         </button>
@@ -78,9 +92,8 @@ const SearchBox = () => {
       {showCards && (
         <>
           {!isMobile ? (
-            /* 🖥️ Desktop View - Framer Motion Animated Cards */
             <div className="z-50 flex flex-wrap justify-center gap-4 sm:gap-6 mt-1 w-full">
-              {cards.map((card) => (
+              {filteredCards.map((card) => (
                 <motion.div
                   key={card.id}
                   className="relative bg-black/80 border border-white/10 rounded-2xl p-4 text-white shadow-md cursor-pointer hover:border-white border-2 flex-grow flex-shrink overflow-hidden"
@@ -127,7 +140,7 @@ const SearchBox = () => {
           ) : (
             /* 📱 Mobile View - Horizontal Scrollable Cards */
             <div className="z-10 flex overflow-x-auto space-x-4 w-full px-2 pb-1 scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-transparent">
-              {cards.map((card) => (
+              {filteredCards.map((card) => (
                 <div
                   key={card.id}
                   onClick={() => navigate(`/product/${card.id}`)}
@@ -158,12 +171,14 @@ const SearchBox = () => {
           )}
 
           {/* Compare Button */}
-          <button
-            className=" z-10 bg-blue-600 text-white font-semibold px-5 py-2 rounded-full hover:bg-blue-500 transition"
-            onClick={() => navigate(`/comparison`)}
-          >
-            Compare These Options
-          </button>
+          {filteredCards.length > 0 && (
+            <button
+              className="z-10 bg-blue-600 text-white font-semibold px-5 py-2 rounded-full hover:bg-blue-500 transition"
+              onClick={() => navigate(`/comparison`)}
+            >
+              Compare These Options
+            </button>
+          )}
         </>
       )}
     </div>
